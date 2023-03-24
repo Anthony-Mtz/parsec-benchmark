@@ -7,9 +7,9 @@
 # Written by Christian Bienia (Initial version)
 #            Christian Fensch (Sparc/Solaris port)
 
-export CC_HOME="/usr"
-export BINUTIL_HOME="/usr"
-export GNUTOOL_HOME="/usr"
+export CC_HOME="/opt/rh/devtoolset-11/root/usr"
+export BINUTIL_HOME="/opt/rh/devtoolset-11/root/usr/"
+export GNUTOOL_HOME="/opt/rh/devtoolset-11/root/usr/"
 export BINARY_PREFIX=""
 
 if [ -z "$HOSTCC" ]; then
@@ -22,7 +22,7 @@ if [ -z "$MAKE" ]; then
   export MAKE=make
 fi
 if [ -z "$TARGET_CROSS" ]; then
-  export TARGET_CROSS=/usr/bin/
+  export TARGET_CROSS=/opt/rh/devtoolset-11/root/usr/bin/
 fi
 
 # Compilers and preprocessors

@@ -1,0 +1,409 @@
+Building the following benchamrks (same from LVA paper)
+parsecmgmt -a build -p blackscholes
+parsecmgmt -a build -p bodytrack
+parsecmgmt -a build -p canneal
+parsecmgmt -a build -p ferret
+parsecmgmt -a build -p fluidanimate
+parsecmgmt -a build -p swaptions
+parsecmgmt -a build -p x264
+
+Testing the benchamrks
+parsecmgmt -a run -p blackscholes -i simlarge
+parsecmgmt -a run -p bodytrack -i simlarge
+parsecmgmt -a run -p canneal -i simlarge
+parsecmgmt -a run -p ferret -i simlarge
+parsecmgmt -a run -p fluidanimate -i simlarge
+parsecmgmt -a run -p swaptions -i simlarge
+parsecmgmt -a run -p x264 -i simlarge
+
+NOTE: x264 failed to run (known failure -- refer to github)
+
+
+[PARSEC] PARSEC Distribution v3.0-beta-20150206
+[PARSEC]
+[PARSEC] PACKAGES
+[PARSEC]
+[PARSEC] parsec.blackscholes [1] (computational finance)
+[PARSEC] Prices a portfolio of options
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads tbb openmp
+[PARSEC]
+[PARSEC] parsec.bodytrack [1] (computer vision)
+[PARSEC] Tracks a human body through space
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads tbb openmp
+[PARSEC]
+[PARSEC] parsec.canneal [1] (engineering)
+[PARSEC] Optimizes the routing of a chip design
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec kernels pthreads
+[PARSEC]
+[PARSEC] parsec.cmake [1] (program development)
+[PARSEC] Unified, cross-platform, compiler-independent build system
+[PARSEC]   Package Group: tools
+[PARSEC]   Contributor:   Kitware Corp.
+[PARSEC]   Aliases:       all tools
+[PARSEC]
+[PARSEC] parsec.dedup [1] (enterprise storage)
+[PARSEC] Global compression with deduplication
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec kernels pthreads
+[PARSEC]
+[PARSEC] parsec.facesim [1] (real-time animation)
+[PARSEC] Physical simulation of a human face
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads
+[PARSEC]
+[PARSEC] parsec.ferret [1] (similarity search)
+[PARSEC] Identify most similar images in a database
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec apps pthreads
+[PARSEC]
+[PARSEC] parsec.fluidanimate [1] (real-time animation)
+[PARSEC] Physical simulation of a fluid
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads tbb
+[PARSEC]
+[PARSEC] parsec.freqmine [1] (data mining)
+[PARSEC] Mine a transaction database for frequent itemsets
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all parsec apps openmp
+[PARSEC]
+[PARSEC] parsec.glib [1] (utility library)
+[PARSEC] Simplifies programming in C
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   GNOME Foundation
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.gsl [1] (numerical library)
+[PARSEC] Provides wide selection of mathematical functions
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   GNU Project
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.hooks [1] (instrumentation library)
+[PARSEC] Defines the hook functions called by the PARSEC benchmarks
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.libjpeg [1] (image compression library)
+[PARSEC] Defines a JPEG encoder and decoder
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   Independent JPEG Group
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.libtool [1] (program development)
+[PARSEC] Tool for creating portable libraries
+[PARSEC]   Package Group: tools
+[PARSEC]   Contributor:   GNU Project
+[PARSEC]   Aliases:       all tools
+[PARSEC]
+[PARSEC] parsec.libxml2 [1] (XML parser library)
+[PARSEC] Implements an XML document parser
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   GNOME Foundation
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.mesa [1] (computer graphics library)
+[PARSEC] Provides an OpenGL implementation for rendering 3D graphics
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   VMware Corp.
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.netdedup [1] (enterprise storage)
+[PARSEC] Global compression with deduplication
+[PARSEC]   Package Group: netapps
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec netapps pthreads
+[PARSEC]
+[PARSEC] parsec.netferret [1] (similarity search)
+[PARSEC] Identify most similar images in a database
+[PARSEC]   Package Group: netapps
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec netapps pthreads
+[PARSEC]
+[PARSEC] parsec.netstreamcluster [1] (machine learning)
+[PARSEC] Online clustering of an input stream
+[PARSEC]   Package Group: netapps
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec netapps pthreads tbb
+[PARSEC]
+[PARSEC] parsec.parmacs [1] (utility library)
+[PARSEC] Macros for parallel constructs
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   MIT
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.raytrace [1] (visualization)
+[PARSEC] Renders a scene with the raytracing method
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads
+[PARSEC]
+[PARSEC] parsec.ssl [1] (Cryptographic)
+[PARSEC] OpenSSL: an open-source implementation of the SSL and TLS protocols
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   The OpenSSL Project
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.streamcluster [1] (machine learning)
+[PARSEC] Online clustering of an input stream
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Princeton University
+[PARSEC]   Aliases:       all workload parsec kernels pthreads tbb
+[PARSEC]
+[PARSEC] parsec.swaptions [1] (computational finance)
+[PARSEC] Prices a portfolio of swaptions
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all workload parsec apps pthreads tbb
+[PARSEC]
+[PARSEC] parsec.tbblib [1] (thread library)
+[PARSEC] Functionality for high-level parallelization
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   Intel Corp.
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] parsec.uptcpip [] (utility library)
+[PARSEC] Simplifies programming in C
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   PARSEC Team
+[PARSEC]   Aliases:       all libs netapps
+[PARSEC]
+[PARSEC] parsec.vips [1] (image transformation)
+[PARSEC] Transforms an input image
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   University of Southampton
+[PARSEC]   Aliases:       all workload parsec apps pthreads
+[PARSEC]
+[PARSEC] parsec.x264 [1] (video compression)
+[PARSEC] Compresses a raw video stream with MPEG-4
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Open source
+[PARSEC]   Aliases:       all workload parsec apps pthreads
+[PARSEC]
+[PARSEC] parsec.yasm [1] (program development)
+[PARSEC] Modular assembler for x86 and amd64 insruction set architectures
+[PARSEC]   Package Group: tools
+[PARSEC]   Contributor:   Peter Johnson and Michael Urman
+[PARSEC]   Aliases:       all tools
+[PARSEC]
+[PARSEC] parsec.zlib [1] (data compression library)
+[PARSEC] Functions for the compression and decompression of data
+[PARSEC]   Package Group: libs
+[PARSEC]   Contributor:   Jean-Loup Gailly and Mark Adler
+[PARSEC]   Aliases:       all libs
+[PARSEC]
+[PARSEC] splash2.barnes [2] (high-performance computing)
+[PARSEC] 
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.cholesky [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2 splash2kernels
+[PARSEC]
+[PARSEC] splash2.fft [2] (signal processing)
+[PARSEC] Performs a complex 1D fast-fourier transformation
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload pthreads splash2 splash2kernels
+[PARSEC]
+[PARSEC] splash2.fmm [2] (high-performance computing)
+[PARSEC] 
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.lu_cb [2] (high-performance computing)
+[PARSEC] LU factorization of a dense matrix (contiguous block allocation)
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2 splash2kernels lu
+[PARSEC]
+[PARSEC] splash2.lu_ncb [2] (high-performance computing)
+[PARSEC] LU factorization of a dense matrix (non-contiguous block allocation)
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2 splash2kernels lu
+[PARSEC]
+[PARSEC] splash2.ocean_cp [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.ocean_ncp [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.radiosity [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.radix [2] (general-purpose computing)
+[PARSEC] Executes an iterative integer radix sort
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2 splash2kernels
+[PARSEC]
+[PARSEC] splash2.raytrace [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.volrend [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.water_nsquared [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2.water_spatial [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2 splash2apps
+[PARSEC]
+[PARSEC] splash2x.barnes [2] (high-performance computing)
+[PARSEC] 
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.cholesky [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2x splash2xkernels
+[PARSEC]
+[PARSEC] splash2x.fft [2] (signal processing)
+[PARSEC] Performs a complex 1D fast-fourier transformation
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload pthreads splash2x splash2xkernels
+[PARSEC]
+[PARSEC] splash2x.fmm [2] (high-performance computing)
+[PARSEC] 
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.lu_cb [2] (high-performance computing)
+[PARSEC] LU factorization of a dense matrix (contiguous block allocation)
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2x splash2xkernels lu
+[PARSEC]
+[PARSEC] splash2x.lu_ncb [2] (high-performance computing)
+[PARSEC] LU factorization of a dense matrix (non-contiguous block allocation)
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2x splash2xkernels lu
+[PARSEC]
+[PARSEC] splash2x.ocean_cp [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.ocean_ncp [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.radiosity [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.radix [2] (general-purpose computing)
+[PARSEC] Executes an iterative integer radix sort
+[PARSEC]   Package Group: kernels
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload kernels pthreads splash2x splash2xkernels
+[PARSEC]
+[PARSEC] splash2x.raytrace [2] (high-performance computing)
+[PARSEC] 
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.volrend [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.water_nsquared [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] splash2x.water_spatial [2] (high-performance computing)
+[PARSEC] Computes the cholesky factorization of a sparse matrix
+[PARSEC]   Package Group: apps
+[PARSEC]   Contributor:   Stanford University
+[PARSEC]   Aliases:       all workload apps pthreads splash2x splash2xapps
+[PARSEC]
+[PARSEC] INPUT SETS
+[PARSEC]
+[PARSEC] native [1]
+[PARSEC] Huge input for performance analysis on real machines
+[PARSEC]
+[PARSEC] simdev [1]
+[PARSEC] Input to assist development of simulators
+[PARSEC]
+[PARSEC] simlarge [1]
+[PARSEC] Large input for performance analysis with simulators
+[PARSEC]
+[PARSEC] simmedium [1]
+[PARSEC] Medium input for performance analysis with simulators
+[PARSEC]
+[PARSEC] simsmall [1]
+[PARSEC] Small input for performance analysis with simulators
+[PARSEC]
+[PARSEC] test [1]
+[PARSEC] Input to test basic program functionality
+[PARSEC]
+[PARSEC] BUILD CONFIGURATIONS
+[PARSEC]
+[PARSEC] gcc-hooks
+[PARSEC] gcc-openmp
+[PARSEC] gcc-pthreads
+[PARSEC] gcc-serial
+[PARSEC] gcc-tbb
+[PARSEC] gcc
+[PARSEC] graphite
+[PARSEC] icc
+[PARSEC] tile-cc
+[PARSEC]
+[PARSEC] BIBLIOGRAPHY
+[PARSEC]
+[PARSEC] [1] Bienia. Benchmarking Modern Multiprocessors. Ph.D. Thesis, 2011.
+[PARSEC] [2] Woo et al. The SPLASH-2 Programs: Characterization and Methodological Considerations. ISCA, 1995.
