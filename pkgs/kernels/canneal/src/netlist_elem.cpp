@@ -70,6 +70,15 @@ routing_cost_t netlist_elem::routing_cost_given_loc(location_t loc)
 }
 
 //*****************************************************************************************
+//  Load Value Approx wrapper function
+//*****************************************************************************************
+double LVA_wrapper(int* loc)
+{
+	return *loc;	
+}
+
+
+//*****************************************************************************************
 //  Get the cost change of swapping from our present location to a new location
 //*****************************************************************************************
 routing_cost_t netlist_elem::swap_cost(location_t* old_loc, location_t* new_loc)
@@ -77,22 +86,23 @@ routing_cost_t netlist_elem::swap_cost(location_t* old_loc, location_t* new_loc)
 	routing_cost_t no_swap = 0;
 	routing_cost_t yes_swap = 0;
 	
+	// LVA here?
 	for (int i = 0; i< fanin.size(); ++i){
 		location_t* fanin_loc = fanin[i]->present_loc.Get();
-		no_swap += fabs(old_loc->x - fanin_loc->x);
-		no_swap += fabs(old_loc->y - fanin_loc->y);
+		no_swap += fabs(LVA_wrapper(&(old_loc->x)) - LVA_wrapper(&(fanin_loc->x)));
+		no_swap += fabs(LVA_wrapper(&(old_loc->y)) - LVA_wrapper(&(fanin_loc->y)));
 		
-		yes_swap += fabs(new_loc->x - fanin_loc->x);
-		yes_swap += fabs(new_loc->y - fanin_loc->y);
+		yes_swap += fabs(LVA_wrapper(&(new_loc->x)) - LVA_wrapper(&(fanin_loc->x)));
+		yes_swap += fabs(LVA_wrapper(&(new_loc->y)) - LVA_wrapper(&(fanin_loc->y)));
 	}
 	
 	for (int i = 0; i< fanout.size(); ++i){
 		location_t* fanout_loc = fanout[i]->present_loc.Get();
-		no_swap += fabs(old_loc->x - fanout_loc->x);
-		no_swap += fabs(old_loc->y - fanout_loc->y);
+		no_swap += fabs(LVA_wrapper(&(old_loc->x)) - LVA_wrapper(&(fanout_loc->x)));
+		no_swap += fabs(LVA_wrapper(&(old_loc->y)) - LVA_wrapper(&(fanout_loc->y)));
 		
-		yes_swap += fabs(new_loc->x - fanout_loc->x);
-		yes_swap += fabs(new_loc->y - fanout_loc->y);
+		yes_swap += fabs(LVA_wrapper(&(new_loc->x)) - LVA_wrapper(&(fanout_loc->x)));
+		yes_swap += fabs(LVA_wrapper(&(new_loc->y)) - LVA_wrapper(&(fanout_loc->y)));
 	}
 	
 	return yes_swap - no_swap;
