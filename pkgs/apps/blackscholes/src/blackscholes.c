@@ -85,6 +85,16 @@ int nThreads;
 // See Hull, Section 11.8, P.243-244
 #define inv_sqrt_2xPI 0.39894228040143270286
 
+
+//*****************************************************************************************
+//  Load Value Approx wrapper function
+//*****************************************************************************************
+float LVA_wrapper_float_star(float* loc)
+{
+    return *loc;
+}
+
+
 fptype CNDF ( fptype InputX ) 
 {
     int sign;
@@ -231,10 +241,11 @@ struct mainWork {
       /* Calling main function to calculate option value based on 
        * Black & Scholes's equation.
        */
-
-      price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
-                                   rate[i], volatility[i], otime[i], 
-                                   otype[i], 0);
+    //TODO check if we want to put it here
+    //LVA_wrapper_float_star(&(data[i].OptionType) 
+      price = BlkSchlsEqEuroNoDiv( LVA_wrapper_float_star(&(sptprice[i])), LVA_wrapper_float_star(&(strike[i])),
+                                   LVA_wrapper_float_star(&(rate[i])), LVA_wrapper_float_star(&(volatility[i])), LVA_wrapper_float_star(&(otime[i])), 
+                                   LVA_wrapper_float_star(&(otype[i])), 0);
       prices[i] = price;
 
 #ifdef ERR_CHK 
@@ -255,6 +266,8 @@ struct mainWork {
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
+
+
 
 #ifdef ENABLE_TBB
 int bs_thread(void *tid_ptr) {
@@ -404,15 +417,15 @@ int main (int argc, char **argv)
 
     buffer2 = (int *) malloc(numOptions * sizeof(fptype) + PAD);
     otype = (int *) (((unsigned long long)buffer2 + PAD) & ~(LINESIZE - 1));
-
-    //TODO speculativley load here?
+//(LVA_wrapper_float_star(&(old_loc->x)
+    //TODO check if one agrees with the wrapper?
     for (i=0; i<numOptions; i++) {
         otype[i]      = (data[i].OptionType == 'P') ? 1 : 0;
-        sptprice[i]   = data[i].s;
-        strike[i]     = data[i].strike;
-        rate[i]       = data[i].r;
-        volatility[i] = data[i].v;    
-        otime[i]      = data[i].t;
+        sptprice[i]   = LVA_wrapper_float_star(&(data[i].s));
+        strike[i]     = LVA_wrapper_float_star(&(data[i].strike));
+        rate[i]       = LVA_wrapper_float_star(&(data[i].r));
+        volatility[i] = LVA_wrapper_float_star(&(data[i].v));    
+        otime[i]      = LVA_wrapper_float_star(&(data[i].t));
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));

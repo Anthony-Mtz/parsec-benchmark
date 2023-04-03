@@ -226,6 +226,7 @@ int HJM_SimPath_Forward(FTYPE **ppdHJMPath,	//Matrix that stores generated HJM p
 		{
 		  dTotalShock = 0;
 		  for (i=0;i<=iFactors-1;++i)
+            //TODO ppdFactors
 		    dTotalShock += ppdFactors[i][l]* pdZ[i];
 		  ppdHJMPath[j][l] = ppdHJMPath[j-1][l+1]+ pdTotalDrift[l]*ddelt + sqrt(ddelt)*dTotalShock;
 		  //as per formula
@@ -261,6 +262,7 @@ int HJM_Correlations(FTYPE **ppdHJMCorr,//Matrix that stores correlations among 
 	{
 		pdTotalVol[i]=0;
 		for(j=0;j<=iFactors-1;++j)
+            //TODO ppdFactors
 			pdTotalVol[i] += ppdFactors[j][i]*ppdFactors[j][i];
 		pdTotalVol[i] = sqrt(pdTotalVol[i]);
 	}
@@ -268,6 +270,7 @@ int HJM_Correlations(FTYPE **ppdHJMCorr,//Matrix that stores correlations among 
 	//Weights computed
 	for(i=0;i<=iN-2;++i)
 		for(j=0;j<=iFactors-1;++j)
+            //TODO ppdFactors
 			ppdWeights[j][i] = ppdFactors[j][i]/pdTotalVol[i];
 
 	//Output matrix initialized to zero

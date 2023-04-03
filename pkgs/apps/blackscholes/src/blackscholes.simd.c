@@ -493,12 +493,12 @@ int main (int argc, char **argv)
     otype = (int *) (((unsigned long long)buffer2 + PAD) & ~(LINESIZE - 1));
 
     for (i=0; i<numOptions; i++) {
-        otype[i]      = (data[i].OptionType == 'P') ? 1 : 0;
-        sptprice[i]   = data[i].s;
-        strike[i]     = data[i].strike;
-        rate[i]       = data[i].r;
-        volatility[i] = data[i].v;
-        otime[i]      = data[i].t;
+        otype[i]      = LVA_wrapper(&(data[i].OptionType) == 'P') ? 1 : 0;
+        sptprice[i]   = LVA_wrapper(&(data[i].s));
+        strike[i]     = LVA_wrapper(&(data[i].strike));
+        rate[i]       = LVA_wrapper(&(data[i].r));
+        volatility[i] = LVA_wrapper(&(data[i].v));
+        otime[i]      = LVA_wrapper(&(data[i].t));
     }
 
     printf("Size of data: %d\n", numOptions * (sizeof(OptionData) + sizeof(int)));

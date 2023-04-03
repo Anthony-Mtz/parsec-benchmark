@@ -50,6 +50,21 @@ FTYPE *dSumSimSwaptionPrice_global_ptr;
 FTYPE *dSumSquareSimSwaptionPrice_global_ptr;
 int chunksize;
 
+//*****************************************************************************************
+//  Load Value Approx wrapper function
+//*****************************************************************************************
+
+double LVA_wrapper_double_star(double* loc)
+{
+    return *loc;
+}
+
+int LVA_wrapper_int_star(int* loc)
+{
+    return *loc;
+}
+
+
 
 #ifdef TBB_VERSION
 struct Worker {
@@ -59,11 +74,13 @@ struct Worker {
     int begin = range.begin();
     int end   = range.end();
 
+    //LVA_wrapper(&(new_loc->x)
+
     for(int i=begin; i!=end; i++) {
-      int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
-					   swaptions[i].dCompounding, swaptions[i].dMaturity, 
-					   swaptions[i].dTenor, swaptions[i].dPaymentInterval,
-					   swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
+      int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  LVA_wrapper_double_star(&(swaptions[i].dStrike)), 
+					   LVA_wrapper_double_star(&(swaptions[i].dCompounding)), LVA_wrapper_double_star(&(swaptions[i].dMaturity)), 
+					   LVA_wrapper_double_star(&(swaptions[i].dTenor)), LVA_wrapper_double_star(&(swaptions[i].dPaymentInterval)),
+					   LVA_wrapper_int_star(&(swaptions[i].iN)), LVA_wrapper_int_star(&(swaptions[i].iFactors)), LVA_wrapper_double_star(&(swaptions[i].dYears)), 
 					   swaptions[i].pdYield, swaptions[i].ppdFactors,
 					   swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
       assert(iSuccess == 1);
@@ -102,13 +119,15 @@ void * worker(void *arg){
 
   for(int i=beg; i < end; i++) {
      //TODO replace the loads here with are function
-     int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
-                                       swaptions[i].dCompounding, swaptions[i].dMaturity, 
-                                       swaptions[i].dTenor, swaptions[i].dPaymentInterval,
-                                       swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
-                                       swaptions[i].pdYield, swaptions[i].ppdFactors,
-                                       swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
-     assert(iSuccess == 1);
+
+    int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  LVA_wrapper_double_star(&(swaptions[i].dStrike)),
+                       LVA_wrapper_double_star(&(swaptions[i].dCompounding)), LVA_wrapper_double_star(&(swaptions[i].dMaturity)),
+                       LVA_wrapper_double_star(&(swaptions[i].dTenor)), LVA_wrapper_double_star(&(swaptions[i].dPaymentInterval)),
+                       LVA_wrapper_int_star(&(swaptions[i].iN)), LVA_wrapper_int_star(&(swaptions[i].iFactors)), LVA_wrapper_double_star(&(swaptions[i].dYears)),
+                       swaptions[i].pdYield, swaptions[i].ppdFactors,
+                       swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
+
+    assert(iSuccess == 1);
      swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
      swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
    }
