@@ -292,6 +292,7 @@ int bs_thread(void *tid_ptr) {
             /* Calling main function to calculate option value based on 
              * Black & Scholes's equation.
              */
+            //TODO all inputs to this function should be speculatively loaded
             price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
                                          rate[i], volatility[i], otime[i], 
                                          otype[i], 0);
@@ -404,6 +405,7 @@ int main (int argc, char **argv)
     buffer2 = (int *) malloc(numOptions * sizeof(fptype) + PAD);
     otype = (int *) (((unsigned long long)buffer2 + PAD) & ~(LINESIZE - 1));
 
+    //TODO speculativley load here?
     for (i=0; i<numOptions; i++) {
         otype[i]      = (data[i].OptionType == 'P') ? 1 : 0;
         sptprice[i]   = data[i].s;

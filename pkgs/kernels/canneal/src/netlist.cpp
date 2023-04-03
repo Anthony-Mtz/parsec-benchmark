@@ -46,7 +46,7 @@ void netlist::release(netlist_elem* elem)
 
 //*****************************************************************************************
 //not thread safe, tho i could make it so if i needed to
-//only look at the non_blank elements:  this saves some time
+//only look at the non_blank elements:  this saves some time TODO
 //*****************************************************************************************
 routing_cost_t netlist::total_routing_cost()
 {
