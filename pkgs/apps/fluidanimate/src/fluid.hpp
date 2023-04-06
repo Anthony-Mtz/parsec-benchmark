@@ -358,6 +358,13 @@ public:
   fptype  operator * (Vec3 const &v) const    { return x*v.x + y*v.y + z*v.z; }
 };
 
+static const float LVA_wrapper_float_star(const float *loc) {
+    return *loc;
+}
+
+static Vec3 LVA_vec (Vec3 const &v) {    
+    return Vec3(LVA_wrapper_float_star(&(v.x)),LVA_wrapper_float_star(&(v.y)),LVA_wrapper_float_star(&(v.z)));
+}
 #endif 
 
 

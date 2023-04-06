@@ -108,8 +108,24 @@ public:
 	FIStatus CopyFrom(const FlexImage<T,C> &src, bool allocate = true);
 	
 	///Pixel access through () operator for given plane
-	inline T &operator ()(int x, int y, int c) {return( *(T *)((char *)mData + mStepBytes * y + mBpp * x + c*sizeof(T) )); };
-	inline T &operator ()(int x, int y, int c) const {return( *(T *)((char *)mData + mStepBytes * y + mBpp * x + c*sizeof(T) )); };
+    //TODO T is Imu8 unsiged char
+
+    //*****************************************************************************************
+    //  Load Value Approx wrapper function
+    //*****************************************************************************************
+    char LVA_wrapper_char_star(char* loc)
+    {
+        return *loc;
+    }
+
+    T &LVA_wrapper_float_star(T* loc)
+    {
+        return *loc;
+    }
+
+
+	inline T &operator ()(int x, int y, int c) {return( LVA_wrapper_float_star((T *)((char *)mData + mStepBytes * y + mBpp * x + c*sizeof(T)))); };
+	inline T &operator ()(int x, int y, int c) const {return( LVA_wrapper_float_star((T *)((char *)mData + mStepBytes * y + mBpp * x + c*sizeof(T)))); };
 	///Pixel access through () operator into plane 0
 	inline T &operator ()(int x, int y) { return (operator()(x, y, 0)); };
 	inline T &operator ()(int x, int y) const { return (operator()(x, y, 0)); };

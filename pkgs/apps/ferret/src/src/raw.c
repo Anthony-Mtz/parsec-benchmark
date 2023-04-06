@@ -182,7 +182,6 @@ static int raw_query(cass_table_t *table, cass_query_t *query, cass_result_t *re
 				for (i = 0; i < bitmap_get_count(&query->candidate->u.bitmap); i++)
 				{
 					id = bitmap_getNext(&query->candidate->u.bitmap, id);
-
 					cass_list_entry_t entry;
 					entry.id = id;
 					entry.dist = vecset_dist->__class->dist(ds, entry.id, query->dataset, query->vecset_id, vec_dist, vecset_dist);
@@ -219,6 +218,7 @@ static int raw_query(cass_table_t *table, cass_query_t *query, cass_result_t *re
 				cass_list_entry_t entry;
 				entry.id = query->candidate->u.list.data[i].id;
 				if (entry.id == CASS_ID_MAX) continue;
+
 				entry.dist = vecset_dist->__class->dist(ds, entry.id, query->dataset, query->vecset_id, vec_dist, vecset_dist);
 				if (entry.dist < query->range)
 				{

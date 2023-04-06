@@ -34,7 +34,6 @@
 
 /////////////////  binary image operators //////////////////////
 
-
 //Addition of two images
 template<class T, int C>
 FlexImage<T,C> operator +(const FlexImage<T,C> &srcR, const FlexImage<T,C> &srcL)

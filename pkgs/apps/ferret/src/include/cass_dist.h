@@ -13,6 +13,7 @@ extern int32_t chunk_cnt [];
 static inline int32_t dist_hamming (cass_size_t n, const chunk_t *c1, const chunk_t *c2)
 /* n = M / CHUNK_BIT */
 {
+    //printf("dist_hamming %d\n",n);
 	cass_size_t dist = 0, i;
 	for (i = 0; i < n; i++)
 	{
@@ -22,6 +23,51 @@ static inline int32_t dist_hamming (cass_size_t n, const chunk_t *c1, const chun
 }
 
 /* Generate distance functions with/without weight/threshold */
+
+static const float LVA_wrapper_float_star(const float* loc)
+{
+    return *loc;
+}
+
+static const int LVA_wrapper_int_star(const int* loc)
+{
+    return *loc;
+}
+
+
+static float dist_L2_float_LVA (cass_size_t D, const float *P1, const float *P2)
+{
+    //printf("here\n");
+    float result;
+    float tmp;
+    cass_size_t i;
+    result = 0;
+    for (i = 0; i < D; i++)
+    {
+        tmp = LVA_wrapper_float_star(&(P1[i])) - LVA_wrapper_float_star(&(P2[i]));
+        tmp *= tmp;
+        result += tmp;
+    }
+    return sqrt(result);
+}
+
+static  int dist_L2_int_LVA (cass_size_t D, const int *P1, const int *P2)
+{
+    //printf("here\n");
+    int result;
+    int tmp;
+    cass_size_t i;
+    result = 0;
+    for (i = 0; i < D; i++)
+    {
+        tmp = LVA_wrapper_int_star(&(P1[i])) - LVA_wrapper_int_star(&(P2[i]));
+        tmp *= tmp;
+        result += tmp;
+    }
+    return sqrt(result);
+}
+
+
 
 #define GEN_DIST(type)\
 \

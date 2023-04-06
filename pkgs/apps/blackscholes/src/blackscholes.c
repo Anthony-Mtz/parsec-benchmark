@@ -306,9 +306,10 @@ int bs_thread(void *tid_ptr) {
              * Black & Scholes's equation.
              */
             //TODO all inputs to this function should be speculatively loaded
-            price = BlkSchlsEqEuroNoDiv( sptprice[i], strike[i],
-                                         rate[i], volatility[i], otime[i], 
-                                         otype[i], 0);
+            price = BlkSchlsEqEuroNoDiv( LVA_wrapper_float_star(&(sptprice[i])), LVA_wrapper_float_star(&(strike[i])),
+                                   LVA_wrapper_float_star(&(rate[i])), LVA_wrapper_float_star(&(volatility[i])), LVA_wrapper_float_star(&(otime[i])),
+                                   LVA_wrapper_float_star(&(otype[i])), 0);
+
             prices[i] = price;
 
 #ifdef ERR_CHK

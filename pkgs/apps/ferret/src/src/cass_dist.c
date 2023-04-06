@@ -30,6 +30,7 @@ extern int32_t chunk_cnt [];
 int32_t dist_hamming (cass_size_t n, const chunk_t *c1, const chunk_t *c2)
 /* n = M / CHUNK_BIT */
 {
+    printf("dist_hamming %d\n",n);
 	cass_size_t dist = 0, i;
 	for (i = 0; i < n; i++)
 	{
@@ -44,6 +45,7 @@ int32_t dist_hamming (cass_size_t n, const chunk_t *c1, const chunk_t *c2)
 \
 type dist_L2_##type (cass_size_t D, const type *P1, const type *P2)\
 {\
+    printf("dist_L2 %d \n",D);\
 	type result;\
 	type tmp;\
 	cass_size_t i;\
@@ -59,6 +61,7 @@ type dist_L2_##type (cass_size_t D, const type *P1, const type *P2)\
 \
 type dist_L2_##type##_W (cass_size_t D, const type *P1, const type *P2, const type *weight)\
 {\
+    printf("dist_L2_w %d\n",D);\
 	type result;\
 	type tmp;\
 	cass_size_t i;\
@@ -75,6 +78,7 @@ type dist_L2_##type##_W (cass_size_t D, const type *P1, const type *P2, const ty
 \
 type dist_L2_##type##_T (cass_size_t D, const type *P1, const type *P2, type T)\
 {\
+    printf("dist_L2_T %d\n",D);\
 	type result;\
 	type tmp;\
 	cass_size_t i;\
@@ -91,6 +95,7 @@ type dist_L2_##type##_T (cass_size_t D, const type *P1, const type *P2, type T)\
 \
 type dist_L1_##type (cass_size_t D, const type *P1, const type *P2)\
 {\
+    printf("dist_L1 %d\n",D);\
 	type result;\
 	type tmp;\
 	cass_size_t i;\
@@ -105,6 +110,7 @@ type dist_L1_##type (cass_size_t D, const type *P1, const type *P2)\
 \
 type dist_L1_##type##_W (cass_size_t D, const type *P1, const type *P2, const type *weight)\
 {\
+    printf("dist_L1_W %d\n",D);\
 	type result;\
 	type tmp;\
 	cass_size_t i;\
@@ -118,6 +124,7 @@ type dist_L1_##type##_W (cass_size_t D, const type *P1, const type *P2, const ty
 }\
 type dist_cos_##type (cass_size_t D, const type *P1, const type *P2)\
 {\
+    printf("dist_L1_T %d\n",D);\
 	type result;\
 	cass_size_t i;\
 	result = 0;\

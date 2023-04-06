@@ -277,6 +277,8 @@ int main (int argc, char *argv[])
 	ret = cass_env_open(&env, db_dir, 0);
 	if (ret != 0) { printf("ERROR: %s\n", cass_strerror(ret)); return 0; }
 
+
+    //TODO look for L2_float
 	vec_dist_id = cass_reg_lookup(&env->vec_dist, "L2_float");
 	assert(vec_dist_id >= 0);
 

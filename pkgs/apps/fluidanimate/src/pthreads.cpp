@@ -811,10 +811,11 @@ void ComputeForcesMT(int tid)
             int numNeighPars = cnumPars[indexNeigh];
             for(int iparNeigh = 0; iparNeigh < numNeighPars; ++iparNeigh)
             {
-              //Check address to make sure forces are computed only once per pair
+              //Check address to make sure forces are computed only once per pair 
               if(&neigh->p[iparNeigh % PARTICLES_PER_CELL] < &cell->p[ipar % PARTICLES_PER_CELL])
               {
-                Vec3 disp = cell->p[ipar % PARTICLES_PER_CELL] - neigh->p[iparNeigh % PARTICLES_PER_CELL];
+                
+                Vec3 disp = LVA_vec(cell->p[ipar % PARTICLES_PER_CELL]) - LVA_vec(neigh->p[iparNeigh % PARTICLES_PER_CELL]);
                 fptype distSq = disp.GetLengthSq();
                 if(distSq < hSq)
                 {
@@ -824,10 +825,9 @@ void ComputeForcesMT(int tid)
                   fptype dist = sqrt(std::max(distSq, 1e-12));
 #endif //ENABLE_DOUBLE_PRECISION
                   fptype hmr = h - dist;
-
-                  Vec3 acc = disp * pressureCoeff * (hmr*hmr/dist) * (cell->density[ipar % PARTICLES_PER_CELL]+neigh->density[iparNeigh % PARTICLES_PER_CELL] - doubleRestDensity);
-                  acc += (neigh->v[iparNeigh % PARTICLES_PER_CELL] - cell->v[ipar % PARTICLES_PER_CELL]) * viscosityCoeff * hmr;
-                  acc /= cell->density[ipar % PARTICLES_PER_CELL] * neigh->density[iparNeigh % PARTICLES_PER_CELL];
+                  Vec3 acc = disp * pressureCoeff * (hmr*hmr/dist) * (LVA_wrapper_float_star(&(cell->density[ipar % PARTICLES_PER_CELL]))+LVA_wrapper_float_star(&(neigh->density[iparNeigh % PARTICLES_PER_CELL])) - doubleRestDensity);
+                  acc += (LVA_vec(neigh->v[iparNeigh % PARTICLES_PER_CELL]) - LVA_vec(cell->v[ipar % PARTICLES_PER_CELL])) * viscosityCoeff * hmr;
+                  acc /= LVA_wrapper_float_star(&(cell->density[ipar % PARTICLES_PER_CELL])) * LVA_wrapper_float_star(&(neigh->density[iparNeigh % PARTICLES_PER_CELL]));
 
                   if( border[index])
                   {

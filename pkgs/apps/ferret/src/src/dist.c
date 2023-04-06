@@ -26,6 +26,7 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 cass_dist_t dist_trivial_dist (cass_size_t n, void *p1, void *p2, void *p3)
 {
+    printf("dist_trivial_dist %d\n",n);
 	return 0.0;
 }
 

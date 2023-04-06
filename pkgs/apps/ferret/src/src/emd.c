@@ -192,6 +192,7 @@ emd(signature_t *Signature1, signature_t *Signature2, float (*Dist)(cass_size_t,
   return (float)(totalCost / w);
 }
 
+
 static float
 emdinit(emd_state_t *state, signature_t *Signature1, signature_t *Signature2, float (*Dist)(cass_size_t, feature_t, feature_t, void *), cass_size_t dim, void *param)
 {
@@ -212,8 +213,10 @@ emdinit(emd_state_t *state, signature_t *Signature1, signature_t *Signature2, fl
   state->maxC = 0;
   for(i=0; i < state->n1; i++)
     for(j=0; j < state->n2; j++) 
-      {
-	state->C[i][j] = Dist(dim, Signature1->Features[i], Signature2->Features[j], param);
+      { 
+    state->C[i][j] = dist_L2_float_LVA(dim, Signature1->Features[i], Signature2->Features[j]);
+    //state->C[i][j] = dist_L2_float(dim, Signature1->Features[i], Signature2->Features[j]);
+	//state->C[i][j] = Dist(dim, Signature1->Features[i], Signature2->Features[j], param);
 	if (state->C[i][j] > state->maxC)
 	  state->maxC = state->C[i][j];
       }
@@ -221,14 +224,14 @@ emdinit(emd_state_t *state, signature_t *Signature1, signature_t *Signature2, fl
   /* SUM UP THE SUPPLY AND DEMAND */
   sSum = 0.0;
   for(i=0; i < state->n1; i++)
-    {
+    { 
       S[i] = Signature1->Weights[i];
       sSum += Signature1->Weights[i];
       state->RowsX[i] = NULL;
     }
   dSum = 0.0;
   for(j=0; j < state->n2; j++)
-    {
+    { 
       D[j] = Signature2->Weights[j];
       dSum += Signature2->Weights[j];
       state->ColsX[j] = NULL;
