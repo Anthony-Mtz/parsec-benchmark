@@ -94,6 +94,11 @@ float LVA_wrapper_float_star(float* loc)
     return *loc;
 }
 
+float LVA_wrapper_int_star(int* loc)
+{
+    return *loc;
+}
+
 
 fptype CNDF ( fptype InputX ) 
 {
@@ -245,7 +250,7 @@ struct mainWork {
     //LVA_wrapper_float_star(&(data[i].OptionType) 
       price = BlkSchlsEqEuroNoDiv( LVA_wrapper_float_star(&(sptprice[i])), LVA_wrapper_float_star(&(strike[i])),
                                    LVA_wrapper_float_star(&(rate[i])), LVA_wrapper_float_star(&(volatility[i])), LVA_wrapper_float_star(&(otime[i])), 
-                                   LVA_wrapper_float_star(&(otype[i])), 0);
+                                   LVA_wrapper_int_star(&(otype[i])), 0);
       prices[i] = price;
 
 #ifdef ERR_CHK 
@@ -308,7 +313,7 @@ int bs_thread(void *tid_ptr) {
             //TODO all inputs to this function should be speculatively loaded
             price = BlkSchlsEqEuroNoDiv( LVA_wrapper_float_star(&(sptprice[i])), LVA_wrapper_float_star(&(strike[i])),
                                    LVA_wrapper_float_star(&(rate[i])), LVA_wrapper_float_star(&(volatility[i])), LVA_wrapper_float_star(&(otime[i])),
-                                   LVA_wrapper_float_star(&(otype[i])), 0);
+                                   LVA_wrapper_int_star(&(otype[i])), 0);
 
             prices[i] = price;
 
